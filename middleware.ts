@@ -17,7 +17,9 @@ export function middleware(request: NextRequest) {
   }
 
   // Verifica se o cookie de sessão existe
-  const sessionCookie = request.cookies.get("authjs.session-token");
+  const sessionCookie = request.cookies.get(
+    "authjs.session-token" || "__Secure-authjs.session-token",
+  );
 
   if (!sessionCookie) {
     // Redireciona para login se não autenticado
